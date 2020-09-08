@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+    <style>
+        .div1{
+            display: none;
+            color: red;
+        }
+    </style>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+
+            $('#register').click(function () {
+                // alert('ok');
+                //获取用户名和密码:
+                username = $('#username').val();
+                password = $('#password').val();
+                alert(username);
+                alert(password);
+                var data={
+                	       "name": username, 
+                	       "password": password
+                	   };
+                data=JSON.stringify(data);
+                $.ajax({
+                    url:"/czq/rest/user/",
+                    type:"POST",    //提交方式
+                    data:data,
+                    dataType:"json",
+                    contentType:"application/json;charset=utf-8",                 
+                }).success(function (data) {
+                	alert(data.res)
+                    if (data.res==1){
+                        alert('调转login页面')
+                        location.href="/czq/login"
+
+                    }else{
+                       alert('跳转失败');
+                       $('.div1').show().html('用户名或密码输入错误')
+
+                    }
+                })
+            });
+        });
+    </script>
+</head>
+<body>
+   <div>
+        用户名:<input type="text" id="username" ><br/>
+        密码<input type="password" id="password"><br/>
+        <input type="submit" value="注册" id="register">
+        <div class="div1"></div>
+   </div>
+</body>
+</html>
