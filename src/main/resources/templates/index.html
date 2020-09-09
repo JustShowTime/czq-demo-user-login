@@ -1,7 +1,7 @@
 <!doctype html>
 
 <!--注意：引入thymeleaf的名称空间-->
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html >
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,24 +10,8 @@
     <title>Document</title>
 </head>
 <body>
-    <p th:text="'hello SpringBoot'">hello thymeleaf</p>
-    <table border="1">
-        <thead>
-        <tr>
-            <td>ID</td>
-            <td>名字</td>
-            <td>电话</td>
-            <td>性别</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:text="${czq}">
-            <td th:text="${czq}"></td>
-            <td th:text="${czq}"></td>
-            <td th:text="${czq}"></td>
-            <td th:text="${czq}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <p >hello thymeleaf</p>
+    <p th:text="${czq}"></p>
+  
 </body>
 </html>
