@@ -12,7 +12,7 @@ public class ParameterValidator {
     }
 
     public static void validLoginName(String loginName, boolean allowNull) {
-        ValidUtil.validByRegex("登录名", loginName, allowNull, "^[a-zA-Z0-9_]{4,32}$");
+        ValidUtil.validByRegex("登录名", loginName, allowNull, "^([\\u4e00-\\u9fa5]{2,20}|[a-zA-Z.\\s]{2,20})$");
     }
 
     public static void validPassword(String password, boolean allowNull) {

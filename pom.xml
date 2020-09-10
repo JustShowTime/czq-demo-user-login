@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.demo</groupId>
-	<artifactId>czq-demo-user-login</artifactId>
+	<artifactId>czq-demo-user-role-permission</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>czq-demo-user-login</name>
-	<description>czq-demo-user-login</description>
+	<name>czq-demo-user-role-permission</name>
+	<description>czq-demo-user-role-permission</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -33,12 +33,30 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.1-jre</version>
+        </dependency>
 		<!-- 通用 mapper -->
 		<dependency>
 			<groupId>tk.mybatis</groupId>
 			<artifactId>mapper</artifactId>
 			<version>4.1.5</version>
 		</dependency>
+		 <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.5.2</version>
+        </dependency>
+         <!-- pagehelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.13</version>
+        </dependency>
 		<!-- mybatis 分页 -->
 		<dependency>
 			<groupId>com.github.miemiedev</groupId>

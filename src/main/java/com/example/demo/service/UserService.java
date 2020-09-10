@@ -68,8 +68,12 @@ public class UserService {
 	public void checkUser4Update(User user) {
 		String name = user.getName();
 		String password = user.getPassword();
-		ParameterValidator.validLoginName(name, false);
-		ParameterValidator.validPassword(password, false);
+		if(name!=null&&name.length()>0) {
+			ParameterValidator.validLoginName(name, false);
+		}
+		if(password!=null&&password.length()>0) {
+			ParameterValidator.validPassword(password, false);
+		}	
 		User userDemo = userDao.selectByPrimaryKey(user.getId());
 		Assert.isTrue(userDemo!=null, "该用户不存在");
 	}
@@ -80,10 +84,16 @@ public class UserService {
 		int num = userDao.delete(user);
 		Assert.isTrue(num == 1, "删除用户失败");
 	}
+	
+	public void deleteUserById(Integer id) {
+
+		int num = userDao.deleteByPrimaryKey(id);
+		Assert.isTrue(num == 1, "删除用户失败");
+	}
 
 	public void updateUser(User user) {
 		checkUser4Update(user);
-		int num = userDao.updateByPrimaryKey(user);
+		int num = userDao.updateByPrimaryKeySelective(user);
 		Assert.isTrue(num == 1, "更新失败,请重启输入");
 	}
 
@@ -91,6 +101,23 @@ public class UserService {
 		Example example = new Example(User.class);
 		example.createCriteria().andLike("name", name);
 		List<User> users = userDao.selectByExample(example);
+		return users;
+	}
+	
+	public User selectUserByName(String name) {
+		User userDemo=new User();
+		userDemo.setName(name);
+		User user=userDao.selectOne(userDemo);
+		return user;
+	}
+	
+	public User selectUserById(Integer id) {
+		User user=userDao.selectByPrimaryKey(id);
+		return user;
+	}
+	
+	public List<User> selectAll() {
+		List<User> users = userDao.selectAll();
 		return users;
 	}
 }
