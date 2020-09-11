@@ -2,9 +2,13 @@ package com.example.demo.config;
 
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 
 import java.util.LinkedHashMap;
 
@@ -48,15 +52,11 @@ public class ShiroConfig {
         map.put("/", "anon");
         map.put("/login", "anon");
         map.put("/regist", "anon");
-        map.put("/doRegister", "anon");
 
         // 需要授权才能访问的网页（按顺序判断）
         // 都能访问的页面
         map.put("/user/profile/", "authc");
         map.put("/user/changePassword/", "authc");
-        map.put("/appointment/my/", "authc");
-        map.put("/appointment/edit/", "authc");
-        map.put("/appointment/add", "authc");
 
         // 管理员权限能访问的页面
         map.put("/user/list", "perms[0]");
@@ -64,9 +64,6 @@ public class ShiroConfig {
         map.put("/user/edit", "perms[0]");
         map.put("/user/edit/", "perms[0]");
         map.put("/user/delete/", "perms[0]");
-        map.put("/appointment/list", "perms[0]");
-        map.put("/appointment/view/", "perms[0]");
-        map.put("/appointment/delete/", "perms[0]");
 
         // 配置退出过滤器,其中的具体的退出代码 Shiro 已经替我们实现了
         map.put("/logout", "logout");
@@ -83,6 +80,12 @@ public class ShiroConfig {
         return bean;
     }
 
+  //加上之后，前台的shiro标签才能生效
+
+    @Bean
+    public ShiroDialect shiroDialect(){
+        return new ShiroDialect();
+    }
 
     /**
      * DefaultWebSecurityManager

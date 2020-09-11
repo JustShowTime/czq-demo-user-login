@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
 <body>
 
 <!--左侧导航-->
@@ -15,8 +16,8 @@
             <ul class="nav nav-drawer">
                 <li class="nav-item"><a href="/user/index"><i class="mdi mdi-home"></i> 后台首页</a></li>
 
-
-                <li class="nav-item nav-item-has-subnav">
+                <shiro:hasPermission name="0"> 
+                <li  class="nav-item nav-item-has-subnav">
                     <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i>用户管理</a>
                     <ul class="nav nav-subnav">
                         <li><a href="/user/list">用户列表</a></li>
@@ -25,7 +26,7 @@
                         <li><a href="/user/list1">用户列表test</a></li>
                     </ul>
                 </li>
-
+                </shiro:hasPermission>
                 <li class="nav-item nav-item-has-subnav">
                     <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> 预约管理</a>
                     <ul class="nav nav-subnav">
