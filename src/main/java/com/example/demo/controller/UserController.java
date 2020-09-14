@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+ package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -64,15 +64,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.DELETE)
+	@ResponseBody
 	public ResponseEntity<Map<String, ?>> deleteUser(@RequestParam("name") String name){
 		userService.deleteUser(name);
 		return ResultHelper.success();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	@ResponseBody
 	public ResponseEntity<Map<String, ?>> deleteUserById(@PathVariable   Integer id){
 		userService.deleteUserById(id);
-		return ResultHelper.success();
+		System.out.println(ResultHelper.successItemSingle(true));
+		return ResultHelper.successItemSingle(true);
 	}
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)

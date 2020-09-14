@@ -27,12 +27,14 @@ public class LoginController {
 	@RequestMapping(value="",method = RequestMethod.POST)
 	@ResponseBody
 	public Boolean indexData(@RequestParam("name") String name,@RequestParam("password") String password) {
+		//1.登陆时赋值UsernamePasswordToken
 		UsernamePasswordToken token = new UsernamePasswordToken(name, password);
         Subject subject = SecurityUtils.getSubject();
- 
+        //2.登陆时，进行认证，授权
         subject.login(token);
-        //login认证通过后，便可拿到 shiro 保存的用户对象
+        //3.login认证通过后，便可拿到 Principal，一般是定义user
         User user1 = (User) subject.getPrincipal();
+        //4.然后把user塞入到session中
         subject.getSession().setAttribute("loginUser", user1);
 		return true;
 	}

@@ -14,10 +14,9 @@ import java.util.LinkedHashMap;
 
 
 /**
- * @Author: weizujie
+ * @Author: czq
  * @Date: 2020/5/7
  * @Version: 1.0
- * @Github: https://github.com/weizujie
  */
 
 @Configuration
@@ -80,8 +79,7 @@ public class ShiroConfig {
         return bean;
     }
 
-  //加上之后，前台的shiro标签才能生效
-
+    //加上之后，前台的shiro标签才能生效
     @Bean
     public ShiroDialect shiroDialect(){
         return new ShiroDialect();

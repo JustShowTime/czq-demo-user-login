@@ -50,6 +50,7 @@ public class ResultHelper {
 
     public static ResponseEntity<Map<String, ?>> errorMsg(HttpStatus httpStatus, String msg) {
         Map<String, ?> map = Collections.singletonMap(MSG, msg);
+        System.out.println(new ResponseEntity<Map<String, ?>>(map, httpStatus));
         return new ResponseEntity<Map<String, ?>>(map, httpStatus);
     }
 

@@ -28,17 +28,17 @@ class CzqDemoUserLoginApplicationTests {
 	
 	@Test
 	void contextLoads() {
-		UserCreateReqVo userCreateReqVo=new UserCreateReqVo();
-		userCreateReqVo.setName("test2");
-		userCreateReqVo.setPassword("qwe123");
-		userService.createUser(userCreateReqVo);
-		
-		List<User> users=userService.selectUser("test2");
-		User user=users.get(0);
-		user.setName("test3");
-		userService.updateUser(user);
-		
-		userService.deleteUser("test3");
+//		UserCreateReqVo userCreateReqVo=new UserCreateReqVo();
+//		userCreateReqVo.setName("test2");
+//		userCreateReqVo.setPassword("qwe123");
+//		userService.createUser(userCreateReqVo);
+//		
+//		List<User> users=userService.selectUser("test2");
+//		User user=users.get(0);
+//		user.setName("test3");
+//		userService.updateUser(user);
+//		
+//		userService.deleteUser("test3");
 	}
 
 }

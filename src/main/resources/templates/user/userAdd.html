@@ -131,6 +131,7 @@
                 },
                 success: function (result) {
                     layer.close(loadingIndex);
+                    debugger;
                     if (result) {
                         layer.msg("用户添加成功", {time: 1000, icon: 6});
                         window.location.href = "/user/list"
