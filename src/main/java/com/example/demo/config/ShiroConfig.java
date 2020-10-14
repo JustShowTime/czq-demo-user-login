@@ -43,6 +43,10 @@ public class ShiroConfig {
         LinkedHashMap<String, String> map = new LinkedHashMap<>();
 
         // 不需要授权的网页
+        map.put("/swagger-ui.html", "anon");
+        map.put("/swagger-resources/**", "anon");
+        map.put("/v2/**", "anon");
+        map.put("/webjars/**", "anon");
         map.put("/css/**", "anon");
         map.put("/js/**", "anon");
         map.put("/images/**", "anon");
@@ -51,7 +55,7 @@ public class ShiroConfig {
         map.put("/", "anon");
         map.put("/login", "anon");
         map.put("/regist", "anon");
-
+        
         // 需要授权才能访问的网页（按顺序判断）
         // 都能访问的页面
         map.put("/user/profile/", "authc");
